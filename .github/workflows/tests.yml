@@ -12,7 +12,6 @@ jobs:
       matrix:
         phpVersions: ['7.4', '8.0']
         winterCmsRelease: ['1.1', 'develop']
-        allowFailure: false
         include:
           - winterCmsRelease: 1.1
             allowFailure: true
