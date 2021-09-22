@@ -37,4 +37,14 @@ class IntlExtensionTest extends \PluginTestCase
         $twigTemplate = $twig->createTemplate($template);
         $this->assertEquals('1,234%', $twigTemplate->render());
     }
+
+    public function test_it_formats_number_as_percentage_using_shortcut_filter()
+    {
+        $twig = $this->getTwig();
+
+        $template = "{{ '12.345'|format_percent_number }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals('1,234%', $twigTemplate->render());
+    }
 }
