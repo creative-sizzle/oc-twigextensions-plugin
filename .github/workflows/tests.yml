@@ -23,7 +23,8 @@ jobs:
     steps:
       - name: Checkout changes
         uses: actions/checkout@v2
-        path: twigextensions-plugin
+        with:
+          path: twigextensions-plugin
 
       - name: Install PHP
         uses: shivammathur/setup-php@v2
