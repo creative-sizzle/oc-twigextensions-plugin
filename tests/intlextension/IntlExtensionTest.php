@@ -1,9 +1,7 @@
 <?php
 
-namespace VojtaSvoboda\TwigExtensions\Tests\IntlExtension;
+namespace CreativeSizzle\TwigExtensions\Tests\IntlExtension;
 
-use NumberFormatter;
-use ScssPhp\ScssPhp\Node\Number;
 use System\Classes\PluginManager;
 
 class IntlExtensionTest extends \PluginTestCase
@@ -14,7 +12,7 @@ class IntlExtensionTest extends \PluginTestCase
 
         $this->app->setLocale('en');
 
-        $plugin = PluginManager::instance()->findByNamespace('VojtaSvoboda.TwigExtensions');
+        $plugin = PluginManager::instance()->findByNamespace('CreativeSizzle.TwigExtensions');
         PluginManager::instance()->bootPlugin($plugin);
     }
 

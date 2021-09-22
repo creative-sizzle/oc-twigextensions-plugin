@@ -1,13 +1,14 @@
-<?php namespace VojtaSvoboda\TwigExtensions\Tests;
+<?php
 
-use App;
+namespace CreativeSizzle\TwigExtensions\Tests;
+
 use Carbon\Carbon;
 use Config;
 use PluginTestCase;
 
 class PluginTest extends PluginTestCase
 {
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -111,7 +112,7 @@ class PluginTest extends PluginTestCase
 
         // this test fails at TravisCI and I don't know why
         $twigTemplate = $twig->createTemplate($template);
-         $this->assertEquals('1 minute ago', $twigTemplate->render());
+        $this->assertEquals('1 minute ago', $twigTemplate->render());
     }
 
     public function testStrftimeFunction()

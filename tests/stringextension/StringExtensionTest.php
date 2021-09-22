@@ -1,6 +1,6 @@
 <?php
 
-namespace VojtaSvoboda\TwigExtensions\Tests\StringExtension;
+namespace CreativeSizzle\TwigExtensions\Tests\StringExtension;
 
 use System\Classes\PluginManager;
 
@@ -12,7 +12,7 @@ class StringExtensionTest extends \PluginTestCase
 
         $this->app->setLocale('en');
 
-        $plugin = PluginManager::instance()->findByNamespace('VojtaSvoboda.TwigExtensions');
+        $plugin = PluginManager::instance()->findByNamespace('CreativeSizzle.TwigExtensions');
         PluginManager::instance()->bootPlugin($plugin);
     }
 

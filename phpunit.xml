@@ -8,9 +8,9 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-    >
+>
     <testsuites>
-        <testsuite name="VojtaSvoboda.TwigExtensions Test Suite">
+        <testsuite name="CreativeSizzle.TwigExtensions Test Suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

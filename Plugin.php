@@ -1,6 +1,7 @@
-<?php namespace VojtaSvoboda\TwigExtensions;
+<?php
 
-use App;
+namespace CreativeSizzle\TwigExtensions;
+
 use Carbon\Carbon;
 use Cms\Classes\Controller;
 use Event;
@@ -18,23 +19,24 @@ use Twig\Extra\String\StringExtension;
 class Plugin extends PluginBase
 {
     /**
-     * @var boolean Determine if this plugin should have elevated privileges.
+     * @var bool Determine if this plugin should have elevated privileges.
      */
     public $elevated = true;
 
     /**
      * Returns information about this plugin.
-     *
-     * @return array
      */
-    public function pluginDetails()
+    public function pluginDetails(): array
     {
         return [
-            'name'        => 'Twig Extensions',
+            'name' => 'Twig Extensions',
             'description' => 'Add more Twig filters to your templates.',
-            'author'      => 'Vojta Svoboda',
-            'icon'        => 'icon-plus',
-            'homepage'    => 'https://github.com/vojtasvoboda/oc-twigextensions-plugin',
+            'author' => 'Creative Sizzle',
+            'icon' => 'icon-plus',
+            'homepage' => 'https://github.com/creative-sizzle/wn-twigextensions-plugin',
+            'replaces' => [
+                'CreativeSizzle.TwigExtensions' => '<2.0.0',
+            ],
         ];
     }
 
@@ -128,7 +130,7 @@ class Plugin extends PluginBase
         $filters += $this->getFileRevision();
 
         return [
-            'filters'   => $filters,
+            'filters' => $filters,
             'functions' => $functions,
         ];
     }
@@ -148,8 +150,9 @@ class Plugin extends PluginBase
         return [
             'template_from_string' => function ($template) use ($twig, $stringLoaderFunc) {
                 $callable = $stringLoaderFunc[0]->getCallable();
+
                 return $callable($twig, $template);
-            }
+            },
         ];
     }
 
@@ -172,7 +175,7 @@ class Plugin extends PluginBase
                 }
 
                 return (new UnicodeString($value))
-                    ->truncate($length, $separator, !$preserve)
+                    ->truncate($length, $separator, ! $preserve)
                     ->toString();
             },
 
@@ -202,7 +205,7 @@ class Plugin extends PluginBase
                 }
 
                 return implode($separator, $sentences);
-            }
+            },
         ];
     }
 
@@ -226,7 +229,7 @@ class Plugin extends PluginBase
             },
             'localizedcurrency' => function ($number, $currency = null, $locale = null) use ($twig, $intlExtension) {
                 return $intlExtension->formatCurrency($number, $currency, [], $locale);
-            }
+            },
         ];
     }
 
@@ -246,7 +249,7 @@ class Plugin extends PluginBase
                 shuffle($array);
 
                 return $array;
-            }
+            },
         ];
     }
 
@@ -260,7 +263,7 @@ class Plugin extends PluginBase
         return [
             'time_diff' => function ($date, $now = null) {
                 return Carbon::parse($date)->diffForHumans($now);
-            }
+            },
         ];
     }
 
@@ -292,7 +295,7 @@ class Plugin extends PluginBase
         return [
             'mailto' => function ($string, $link = true, $protected = true, $text = null, $class = "") {
                 return $this->hideEmail($string, $link, $protected, $text, $class);
-            }
+            },
         ];
     }
 
@@ -306,6 +309,7 @@ class Plugin extends PluginBase
         return [
             'strftime' => function ($time, $format = '%d.%m.%Y %H:%M:%S') {
                 $timeObj = new Carbon($time);
+
                 return strftime($format, $timeObj->getTimestamp());
             },
             'uppercase' => function ($string) {
@@ -453,7 +457,7 @@ class Plugin extends PluginBase
         }
 
         // if we want just unprotected link
-        if (!$protected) {
+        if (! $protected) {
             return $link ? '<a href="mailto:' . $email . '">' . $linkText . '</a>' : $linkText;
         }
 
@@ -476,7 +480,7 @@ class Plugin extends PluginBase
         } else {
             $script .= 'document.getElementById("' . $id . '").innerHTML=y';
         }
-        $script = "eval(\"" . str_replace(array("\\", '"'), array("\\\\", '\"'), $script) . "\")";
+        $script = "eval(\"" . str_replace(["\\", '"'], ["\\\\", '\"'], $script) . "\")";
         $script = '<script type="text/javascript">/*<![CDATA[*/' . $script . '/*]]>*/</script>';
 
         return '<span id="' . $id . '">[javascript protected email address]</span>' . $script;
