@@ -14,6 +14,8 @@ jobs:
         winterCmsRelease: ['1.1', 'develop']
         allowFailure: false
         include:
+          - winterCmsRelease: 1.1
+            allowFailure: true
           - winterCmsRelease: develop
             allowFailure: true
       fail-fast: false
