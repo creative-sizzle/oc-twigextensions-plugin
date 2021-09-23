@@ -35,7 +35,7 @@ class Plugin extends PluginBase
             'icon' => 'icon-plus',
             'homepage' => 'https://github.com/creative-sizzle/wn-twigextensions-plugin',
             'replaces' => [
-                'CreativeSizzle.TwigExtensions' => '<2.0.0',
+                'VojtaSvoboda.TwigExtensions' => '<2.0.0',
             ],
         ];
     }
