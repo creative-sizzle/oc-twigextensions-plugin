@@ -14,7 +14,7 @@ Tested with the latest stable OctoberCMS build 420 (with Laravel 5.5). For Larav
 Install plugin from CMS backend or by Composer:
 
 ```
-composer require vojtasvoboda/oc-twigextensions-plugin:dev-master
+composer require creative-sizzle/wn-twigextensions-plugin
 ```
 
 Than you can use newly added filters/functions at your templates:
